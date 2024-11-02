@@ -1,57 +1,85 @@
 <div class="colunas">
   <div class="cadastro">
-    <h3>Registro de Produtos</h3>
-    <label for="codigoProduto" class="form-label">Código do produto</label>
-    <input
-      type="text"
-      class="form-control"
-      id="codigoProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="nomeProduto" class="form-label">Nome do Produto</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nomeProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="precoProduto" class="form-label">Preço do Produto</label>
-    <input
-      type="text"
-      class="form-control"
-      id="precoProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="validadeProduto" class="form-label">Validade do Produto</label>
-    <input
-      type="date"
-      class="form-control"
-      id="validadeProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="unidadeMedida" class="form-label">Unidade de Medida</label>
-    <input
-      type="text"
-      class="form-control"
-      id="unidadeMedida"
-      placeholder="Digite Aqui"
-    />
-    <label for="descontoProduto" class="form-label">Desconto do Produto</label>
-    <input
-      type="number"
-      class="form-control"
-      id="descontoProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="quantidadeProduto" class="form-label"
-      >Quantidade do Produto</label
-    >
-    <input
-      type="number"
-      class="form-control"
-      id="quantidadeProduto"
-      placeholder="Digite Aqui"
-    />
-    <button class="btn btn-primary">Cadastrar</button>
+    <form (submit)="addProduto()">
+      <h3>Registro de Produtos</h3>
+      <label for="codigoProduto" class="form-label">Código do produto</label>
+      <input
+        [(ngModel)]="novoProduto.codigoProduto"
+        name="codigoProduto"
+        type="text"
+        class="form-control"
+        id="codigoProduto"
+        placeholder="Digite Aqui"
+      />
+      <label for="nomeProduto" class="form-label">Nome do Produto</label>
+      <input
+        [(ngModel)]="novoProduto.nomeProduto"
+        name="nomeProduto"
+        type="text"
+        class="form-control"
+        id="nomeProduto"
+        placeholder="Digite Aqui"
+      />
+      <label for="precoProduto" class="form-label">Preço do Produto</label>
+      <input
+        [(ngModel)]="novoProduto.precoProduto"
+        name="precoProduto"
+        type="number"
+        class="form-control"
+        id="precoProduto"
+        placeholder="Digite Aqui"
+      />
+      <label for="validadeProduto" class="form-label">Validade do Produto</label>
+      <input
+        [(ngModel)]="novoProduto.validadeProduto"
+        name="validadeProduto"
+        type="date"
+        class="form-control"
+        id="validadeProduto"
+        placeholder="Digite Aqui"
+      />
+      <label for="unidadeMedida" class="form-label">Unidade de Medida</label>
+      <input
+        [(ngModel)]="novoProduto.unidadeMedidaProduto"
+        name="unidadeMedidaProduto"
+        type="text"
+        class="form-control"
+        id="unidadeMedida"
+        placeholder="Digite Aqui"
+      />
+      <label for="descontoProduto" class="form-label">Desconto do Produto</label>
+      <input
+        [(ngModel)]="novoProduto.descontoProduto"
+        name="descontoProduto"
+        type="number"
+        class="form-control"
+        id="descontoProduto"
+        placeholder="Digite Aqui"
+      />
+      <label for="quantidadeProduto" class="form-label">Quantidade do Produto</label>
+      <input
+        [(ngModel)]="novoProduto.quantidadeProduto"
+        name="quantidadeProduto"
+        type="number"
+        class="form-control"
+        id="quantidadeProduto"
+        placeholder="Digite Aqui"
+      />
+      <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let produto of produtos; let i = index">
+        Código: {{ produto.codigoProduto }} - Nome:
+        {{ produto.nomeProduto }} - R$
+        {{ produto.precoProduto | number : '1.2-2' }} - Validade:
+        {{ produto.validadeProduto }} - Unidade de Medida:
+        {{ produto.unidadeMedidaProduto }} - Desconto:
+        {{ produto.descontoProduto }} - Quantidade:
+        {{ produto.quantidadeProduto }} - Descrição:
+        {{ produto.descricaoProduto }}
+        <button (click)="deleteProduto(i)" class="btn btn-danger">Deletar</button>
+      </li>
+    </ul>
   </div>
 </div>

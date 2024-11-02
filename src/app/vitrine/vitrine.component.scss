@@ -1,0 +1,18 @@
+.vitrine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .produto {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+  }
+  
+  .produto h3 {
+    margin-top: 0;
+  }
+  

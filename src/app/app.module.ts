@@ -6,13 +6,18 @@ import { RegistroProdutosComponent } from './registro-produtos/registro-produtos
 import { RegistroFuncionariosComponent } from './registro-funcionarios/registro-funcionarios.component';
 import { RegistrosInternosComponent } from './registros-internos/registros-internos.component';
 import { VitrineComponent } from './vitrine/vitrine.component';
+import { DatabaseService } from './database.service';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'registro-produtos', component: RegistroProdutosComponent },
   { path: 'registro-funcionarios', component: RegistroFuncionariosComponent },
   { path: 'registros-internos', component: RegistrosInternosComponent },
-  { path: 'vitrine', component: VitrineComponent }
+  { path: 'vitrine', component: VitrineComponent },
 ];
 
 @NgModule({
@@ -23,7 +28,10 @@ const routes: Routes = [
     RegistroProdutosComponent,
     RegistroFuncionariosComponent,
     RegistrosInternosComponent,
-    VitrineComponent
-  ]
+    VitrineComponent,
+    FormsModule,
+    CommonModule,
+  ],
+  providers: [DatabaseService],
 })
-export class AppModule { }
+export class AppModule {}

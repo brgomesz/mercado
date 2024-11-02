@@ -1,12 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DatabaseService, Produto } from '../database.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-produtos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './registro-produtos.component.html',
-  styleUrl: './registro-produtos.component.scss'
+  styleUrls: ['./registro-produtos.component.scss'],
 })
-export class RegistroProdutosComponent {
+export class RegistroProdutosComponent implements OnInit {
+  produtos: Produto[] = [];
+  novoProduto: Produto = {
+    codigoProduto: 0,
+    nomeProduto: '',
+    precoProduto: 0,
+    validadeProduto: '',
+    unidadeMedidaProduto: '',
+    descontoProduto: 0,
+    quantidadeProduto: 0,
+    descricaoProduto: '',
+  };
 
+  constructor(private dbService: DatabaseService) {}
+
+  ngOnInit(): void {
+    this.loadProdutos();
+  }
+
+  async loadProdutos() {
+    this.produtos = await this.dbService.getProdutos();
+  }
+
+  async addProduto() {
+    await this.dbService.addProduto(this.novoProduto);
+    this.novoProduto = {
+      codigoProduto: 0,
+      nomeProduto: '',
+      precoProduto: 0,
+      validadeProduto: '',
+      unidadeMedidaProduto: '',
+      descontoProduto: 0,
+      quantidadeProduto: 0,
+      descricaoProduto: '',
+    };
+    this.loadProdutos();
+  }
+
+  async deleteProduto(index: number) {
+    const produto = this.produtos[index];
+    if (produto && produto.id !== undefined) {
+      await this.dbService.deleteProduto(produto.id);
+      this.loadProdutos();
+    } else {
+      console.error("Produto não encontrado ou id não definido!");
+    }
+  }
 }

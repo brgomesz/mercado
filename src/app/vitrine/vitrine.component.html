@@ -1,1 +1,12 @@
-<p>vitrine works!</p>
+<h2>Vitrine de Produtos</h2>
+<div class="vitrine">
+  <div *ngFor="let produto of produtos" class="produto">
+    <h3>{{ produto.nomeProduto }}</h3>
+    <p>Preço: R$ {{ produto.precoProduto | number : "1.2-2" }}</p>
+    <p>Validade: {{ produto.validadeProduto }}</p>
+    <p>Unidade de Medida: {{ produto.unidadeMedidaProduto }}</p>
+    <p>Desconto: {{ produto.descontoProduto }}</p>
+    <p>Quantidade: {{ produto.quantidadeProduto }}</p>
+    <p>Descrição: {{ produto.descricaoProduto }}</p>
+  </div>
+</div>
