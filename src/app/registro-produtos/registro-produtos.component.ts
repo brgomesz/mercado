@@ -13,13 +13,13 @@ import { FormsModule } from '@angular/forms';
 export class RegistroProdutosComponent implements OnInit {
   produtos: Produto[] = [];
   novoProduto: Produto = {
-    codigoProduto: 0,
+    codigoProduto: null,
     nomeProduto: '',
-    precoProduto: 0,
+    precoProduto: null,
     validadeProduto: '',
     unidadeMedidaProduto: '',
-    descontoProduto: 0,
-    quantidadeProduto: 0,
+    descontoProduto: null,
+    quantidadeProduto: null,
     descricaoProduto: '',
   };
 
@@ -36,13 +36,13 @@ export class RegistroProdutosComponent implements OnInit {
   async addProduto() {
     await this.dbService.addProduto(this.novoProduto);
     this.novoProduto = {
-      codigoProduto: 0,
+      codigoProduto: null,
       nomeProduto: '',
-      precoProduto: 0,
+      precoProduto: null,
       validadeProduto: '',
       unidadeMedidaProduto: '',
-      descontoProduto: 0,
-      quantidadeProduto: 0,
+      descontoProduto: null,
+      quantidadeProduto: null,
       descricaoProduto: '',
     };
     this.loadProdutos();

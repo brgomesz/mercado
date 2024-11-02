@@ -1,54 +1,86 @@
 <div class="colunas">
   <div class="cadastro">
-    <h3>Registro de Funcionários</h3>
-    <label for="cpfFuncionario" class="form-label">CPF do Funcionario</label>
-    <input
-      type="text"
-      class="form-control"
-      id="cpfFuncionario"
-      placeholder="Digite Aqui"
-    />
-    <label for="nomeFuncionario" class="form-label">Nome do Funcionario</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nomeFuncionario"
-      placeholder="Digite Aqui"
-    />
-    <label for="senhaFuncionario" class="form-label"
-      >Senha do Funcionário</label
-    >
-    <input
-      type="text"
-      class="form-control"
-      id="precoProduto"
-      placeholder="Digite Aqui"
-    />
-    <label for="permissaoFuncionario" class="form-label"
-      >Permissão do Funcionário</label
-    >
-    <input
-      type="text"
-      class="form-control"
-      id="permissaoFuncionario"
-      placeholder="Digite Aqui"
-    />
-    <label for="salarioFuncionario" class="form-label"
-      >Salário do Funcionário</label
-    >
-    <input
-      type="number"
-      class="form-control"
-      id="salarioFuncionario"
-      placeholder="Digite Aqui"
-    />
-    <label for="descontoProduto" class="form-label">Horas Trabalhadas</label>
-    <input
-      type="number"
-      class="form-control"
-      id="descontoProduto"
-      placeholder="Digite Aqui"
-    />
-    <button class="btn btn-primary">Cadastrar</button>
+    <form (submit)="addFuncionarios()">
+      <h3>Registro de Funcionários</h3>
+      <label for="cpfFuncionario" class="form-label">CPF do Funcionario</label>
+      <input
+        [(ngModel)]="novoFuncionario.cpfFuncionario"
+        name="cpfFuncionario"
+        type="text"
+        mask="999.999.999-99"
+        maxlength="11"
+        class="form-control"
+        id="cpfFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <label for="nomeFuncionario" class="form-label"
+        >Nome do Funcionario</label
+      >
+      <input
+        [(ngModel)]="novoFuncionario.nomeFuncionario"
+        name="nomeFuncionario"
+        type="text"
+        class="form-control"
+        id="nomeFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <label for="senhaFuncionario" class="form-label"
+        >Senha do Funcionário</label
+      >
+      <input
+        [(ngModel)]="novoFuncionario.senhaFuncionario"
+        name="senhaFuncionario"
+        type="text"
+        class="form-control"
+        id="senhaFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <label for="permissaoFuncionario" class="form-label"
+        >Permissão do Funcionário</label
+      >
+      <input
+        [(ngModel)]="novoFuncionario.permissaoFuncionario"
+        name="permissaoFuncionario"
+        type="text"
+        class="form-control"
+        id="permissaoFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <label for="salarioFuncionario" class="form-label"
+        >Salário do Funcionário</label
+      >
+      <input
+        [(ngModel)]="novoFuncionario.salarioFuncionario"
+        name="salarioFuncionario"
+        type="number"
+        class="form-control"
+        id="salarioFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <label for="horasFuncionario" class="form-label">Horas Trabalhadas</label>
+      <input
+        [(ngModel)]="novoFuncionario.horasFuncionario"
+        name="horasFuncionario"
+        type="number"
+        class="form-control"
+        id="horasFuncionario"
+        placeholder="Digite Aqui"
+      />
+      <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </form>
+
+    <ul>
+      <li *ngFor="let funcionario of funcionarios; let i = index">
+        <p>CPF: {{ funcionario.cpfFuncionario }}</p>
+        <p>Nome: {{ funcionario.nomeFuncionario }}</p>
+        <p>Senha: {{ funcionario.senhaFuncionario }}</p>
+        <p>Permissão: {{ funcionario.permissaoFuncionario }}</p>
+        <p>Salário: {{ funcionario.salarioFuncionario | number : "1.2-2" }}</p>
+        <p>Horas: {{ funcionario.horasFuncionario }}</p>
+        <button (click)="deleteFuncionarios(i)" class="btn btn-danger">
+          X
+        </button>
+      </li>
+    </ul>
   </div>
 </div>

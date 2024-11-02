@@ -29,7 +29,9 @@
         id="precoProduto"
         placeholder="Digite Aqui"
       />
-      <label for="validadeProduto" class="form-label">Validade do Produto</label>
+      <label for="validadeProduto" class="form-label"
+        >Validade do Produto</label
+      >
       <input
         [(ngModel)]="novoProduto.validadeProduto"
         name="validadeProduto"
@@ -47,7 +49,9 @@
         id="unidadeMedida"
         placeholder="Digite Aqui"
       />
-      <label for="descontoProduto" class="form-label">Desconto do Produto</label>
+      <label for="descontoProduto" class="form-label"
+        >Desconto do Produto</label
+      >
       <input
         [(ngModel)]="novoProduto.descontoProduto"
         name="descontoProduto"
@@ -56,7 +60,9 @@
         id="descontoProduto"
         placeholder="Digite Aqui"
       />
-      <label for="quantidadeProduto" class="form-label">Quantidade do Produto</label>
+      <label for="quantidadeProduto" class="form-label"
+        >Quantidade do Produto</label
+      >
       <input
         [(ngModel)]="novoProduto.quantidadeProduto"
         name="quantidadeProduto"
@@ -70,15 +76,17 @@
 
     <ul>
       <li *ngFor="let produto of produtos; let i = index">
-        Código: {{ produto.codigoProduto }} - Nome:
-        {{ produto.nomeProduto }} - R$
-        {{ produto.precoProduto | number : '1.2-2' }} - Validade:
-        {{ produto.validadeProduto }} - Unidade de Medida:
-        {{ produto.unidadeMedidaProduto }} - Desconto:
-        {{ produto.descontoProduto }} - Quantidade:
-        {{ produto.quantidadeProduto }} - Descrição:
-        {{ produto.descricaoProduto }}
-        <button (click)="deleteProduto(i)" class="btn btn-danger">Deletar</button>
+        <p>Código: {{ produto.codigoProduto }}</p>
+        <p>Nome: {{ produto.nomeProduto }}</p>
+        <p>R$ {{ produto.precoProduto | number : "1.2-2" }}</p>
+        <p>Validade: {{ produto.validadeProduto }}</p>
+        <p>Unidade de Medida: {{ produto.unidadeMedidaProduto }}</p>
+        <p>Desconto: {{ produto.descontoProduto }}</p>
+        <p>Quantidade: {{ produto.quantidadeProduto }}</p>
+        <p>Descrição: {{ produto.descricaoProduto }}</p>
+        <button (click)="deleteProduto(i)" class="btn btn-danger">
+          X
+        </button>
       </li>
     </ul>
   </div>
